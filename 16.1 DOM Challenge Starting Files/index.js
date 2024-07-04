@@ -1,1 +1,3 @@
-document.query
+document.query;
+{
+}
