@@ -4,11 +4,13 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
     var buttonPressed = this.innerHTML;
     playSound(buttonPressed);
+    buttonAnimation(buttonPressed);
   });
 }
 
 document.addEventListener("keydown", function (event) {
   playSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function playSound(key) {
@@ -45,4 +47,12 @@ function playSound(key) {
       console.log("Invalid Choice");
       break;
   }
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
